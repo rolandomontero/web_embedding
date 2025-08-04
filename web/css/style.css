@@ -1,0 +1,12 @@
+#flutter_target {
+  border: 1px solid #aaa;
+  border-radius: 4px;
+  width: 320px;
+  height: 480px;
+  transition: all 150ms ease-in;
+}
+
+.center {
+  margin: auto;
+  width: 50%;
+}
