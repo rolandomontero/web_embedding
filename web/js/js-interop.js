@@ -17,5 +17,14 @@
    incrementButton.addEventListener('click', function() {
     appState.increment();
    });
+
+   let cambiarButton = document.getElementById('cambiar');
+    cambiarButton.addEventListener('click', function() {
+      appState.setCount(parseInt(valueField.value, 10));
+    });
+
+
+
+
   };
 }());

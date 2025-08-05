@@ -26,7 +26,9 @@ class _MyHomePageState extends State<MyHomePage> {
 
     // Exportar el estado a JavaScript
     final export = js_util.createDartExport(this);
+    // Asignar el estado exportado a una propiedad global
     js_util.setProperty(js_util.globalThis, '_appState', export);
+    // Llamar a una función JavaScript para indicar que el estado ha sido exportado
     js_util.callMethod<void>(js_util.globalThis, '_stateSet', []);
   }
 
@@ -46,6 +48,15 @@ class _MyHomePageState extends State<MyHomePage> {
 
   @js.JSExport()
   int get count => _counter;
+
+  @js.JSExport()
+  void setCount(int value) {
+    setState(() {
+      _counter = value;
+      // Notificar a los observadores
+      _streamController.add(null);
+    });
+  }
 
   @override
   Widget build(BuildContext context) {
